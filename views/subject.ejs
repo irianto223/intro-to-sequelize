@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>subject page</title>
+  </head>
+  <body>
+    <table border="1px" width="100%">
+      <tr>
+        <th>id</th>
+        <th>subject name</th>
+      </tr>
+      <% dataSubject.forEach(d => { %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.subject_name %></td>
+      </tr>
+      <% }) %>
+    </table>
+    <br><a href="/">back</a>
+  </body>
+</html>
