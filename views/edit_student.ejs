@@ -9,9 +9,11 @@
       <input type="text" name="first_name" placeholder="first name" value="<%= dataEdit.first_name %>">
       <input type="text" name="last_name" placeholder="last name" value="<%= dataEdit.last_name %>">
       <input type="text" name="email" placeholder="email" value="<%= dataEdit.email %>">
+      <input type="hidden" name="emailPembanding" value="<%= dataEdit.email %>">
       <input type="text" name="jurusan" placeholder="jurusan" value="<%= dataEdit.jurusan %>">
       <input type="submit" name="submit" value="SUBMIT">
     </form>
+    <p id="errorMessage"></p>
     <br><a href="/students">back</a>
   </body>
 </html>
