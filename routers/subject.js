@@ -2,13 +2,15 @@
 var express = require('express')
 var router = express.Router()
 
-var subjectModel = require('../models')
+var model = require('../models')
 
 router.get('/subjects', (req,res) => {
-  subjectModel.Subject.findAll()
+  model.Subject.findAll({
+    include: model.Teacher
+  })
   .then(data => {
-  // projects will be an array of all Project instances
     res.render('subject', {dataSubject: data})
+    // console.log(data);
   })
 })
 

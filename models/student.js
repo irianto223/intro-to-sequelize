@@ -6,19 +6,17 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       validate: {
-        isEmail: {
-          args: true,
-          msg: 'email tidak valid.'
-        }
+        isEmail: true
       }
     },
     jurusan: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
+  Student.associate= (models) => {
+    Student.belongsToMany(models.Subject, {
+      through: 'StudentSubjects'
+    })
+  }
+
   return Student;
 };

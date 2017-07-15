@@ -2,17 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>edit student</title>
+    <title>edit teacher</title>
   </head>
   <body>
-    <form action="/students/edit/<%= dataEdit.id %>" method="post">
+    <form action="/teachers/edit/<%= dataEdit.id %>" method="post">
       <input type="text" name="first_name" placeholder="first name" value="<%= dataEdit.first_name %>">
       <input type="text" name="last_name" placeholder="last name" value="<%= dataEdit.last_name %>">
       <input type="text" name="email" placeholder="email" value="<%= dataEdit.email %>">
-      <input type="hidden" name="emailPembanding" value="<%= dataEdit.email %>">
-      <input type="text" name="jurusan" placeholder="jurusan" value="<%= dataEdit.jurusan %>">
+      <select name="SubjectId">
+        <% dataSubject.forEach(d => { %>
+        <option value="<%= d.id %>"><%= d.subject_name %></option>
+        <% }) %>
+      </select>
       <input type="submit" name="submit" value="SUBMIT">
     </form>
-    <br><a href="/students">back</a>
+    <br><a href="/teachers">back</a>
   </body>
 </html>
