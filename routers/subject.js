@@ -15,8 +15,8 @@ router.get('/subjects', (req,res) => {
 })
 
 router.get('/subjects/:id/enrolledstudents', (req,res) => {
-  model.StudentSubjects.findAll({
-    include: [model.Student, model.Subject],
+  model.StudentSubject.findAll({
+    include: {all: true},
     where: {SubjectId: req.params.id}
   })
   .then(data => {
@@ -29,6 +29,13 @@ router.get('/subjects/:id/givescore', (req,res) => {
   model.StudentSubject.findById(req.params.id)
   .then(data => {
     res.render('give_score', {dataSS: data})
+  })
+})
+
+router.post('/subjects/:id/givescore', (req,res) => {
+  model.StudentSubject.update({Score: req.body.nilai}, {where: {id: req.params.id}})
+  .then(() => {
+    res.redirect(`/subjects/${req.params.id}/enrolledstudents`)
   })
 })
 

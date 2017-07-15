@@ -92,7 +92,7 @@ router.get('/students/:id/addsubject', (req,res) => {
 })
 
 router.post('/students/:id/addsubject', (req,res) => {
-  model.StudentSubjects.create({SubjectId: req.body.dropDownSubject, StudentId: req.params.id, createdAt: new Date(), updatedAt: new Date()})
+  model.StudentSubject.create({SubjectId: req.body.dropDownSubject, StudentId: req.params.id, createdAt: new Date(), updatedAt: new Date()})
   res.redirect('/students')
 })
 
