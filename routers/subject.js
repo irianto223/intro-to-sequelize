@@ -33,9 +33,15 @@ router.get('/subjects/:id/givescore', (req,res) => {
 })
 
 router.post('/subjects/:id/givescore', (req,res) => {
-  model.StudentSubject.update({Score: req.body.nilai}, {where: {id: req.params.id}})
+  model.StudentSubject.update({
+    Score: req.body.nilai
+  },
+  {
+    include: {all: true},
+    where: {id: req.params.id}
+  })
   .then(() => {
-    res.redirect(`/subjects/${req.params.id}/enrolledstudents`)
+    res.redirect(`/subjects/${req.body.idSubject}/enrolledstudents`)
   })
 })
 
