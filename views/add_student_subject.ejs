@@ -19,10 +19,12 @@
         <td><%=dataStudent.email%></td>
       </tr>
     </table><br>
-    <form class="" action="index.html" method="post">
+    <form action="/students/<%=dataStudent.id%>/addsubject" method="post">
       <label for="">Choose Subject</label><br>
       <select name="dropDownSubject">
-        <option value="">tes</option>
+        <%dataSubject.forEach(d => {%>
+          <option value="<%=d.id%>"><%=d.subject_name%></option>
+        <%})%>
       </select><br>
       <input type="submit" name="submit"  value="submit">
     </form><br>

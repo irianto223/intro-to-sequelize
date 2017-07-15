@@ -84,8 +84,16 @@ router.post('/students/edit/:id', (req,res) => {
 router.get('/students/:id/addsubject', (req,res) => {
   model.Student.findById(req.params.id)
   .then(data => {
-    res.render('add_student_subject', {dataStudent: data})
+    model.Subject.findAll()
+    .then(data2 => {
+      res.render('add_student_subject', {dataStudent: data, dataSubject: data2})
+    })
   })
+})
+
+router.post('/students/:id/addsubject', (req,res) => {
+  model.StudentSubjects.create({SubjectId: req.body.dropDownSubject, StudentId: req.params.id, createdAt: new Date(), updatedAt: new Date()})
+  res.redirect('/students')
 })
 
 module.exports = router
