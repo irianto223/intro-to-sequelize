@@ -9,11 +9,21 @@
       <tr>
         <th>id</th>
         <th>subject name</th>
+        <th>teacher</th>
+        <th>actions</th>
       </tr>
       <% dataSubject.forEach(d => { %>
       <tr>
         <td><%= d.id %></td>
         <td><%= d.subject_name %></td>
+        <td>
+          <ol>
+            <%d.Teachers.forEach(teacher => {%>
+            <li><%= teacher.first_name %> <%= teacher.last_name %></li>
+            <%})%>
+          </ol>
+        </td>
+        <td><a href="subjects/<%=d.id%>/enrolledstudents">Enrolled Students</a></td>
       </tr>
       <% }) %>
     </table>

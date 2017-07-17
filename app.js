@@ -16,15 +16,15 @@ var teacherModel = require('./models/teacher')
 var subjectModel = require('./models/subject')
 var studentModel = require('./models/student')
 
-var indexRouter = require('./routers/index')
+var indexRouter = require('./routers/')
 var teacherRouter = require('./routers/teacher')
 var subjectRouter = require('./routers/subject')
 var studentRouter = require('./routers/student')
 
 app.use('/', indexRouter)
-app.use('/', teacherRouter)
-app.use('/', subjectRouter)
-app.use('/', studentRouter)
+app.use('/teachers', teacherRouter)
+app.use('/subjects', subjectRouter)
+app.use('/students', studentRouter)
 
 
 app.listen(3000)
