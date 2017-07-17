@@ -4,7 +4,7 @@ var router = express.Router()
 
 var model = require('../models')
 
-router.get('/subjects', (req,res) => {
+router.get('/', (req,res) => {
   model.Subject.findAll({
     include: model.Teacher
   })
@@ -14,7 +14,7 @@ router.get('/subjects', (req,res) => {
   })
 })
 
-router.get('/subjects/:id/enrolledstudents', (req,res) => {
+router.get('/:id/enrolledstudents', (req,res) => {
   model.StudentSubject.findAll({
     include: {all: true},
     where: {SubjectId: req.params.id}
@@ -25,14 +25,14 @@ router.get('/subjects/:id/enrolledstudents', (req,res) => {
   })
 })
 
-router.get('/subjects/:id/givescore', (req,res) => {
+router.get('/:id/givescore', (req,res) => {
   model.StudentSubject.findById(req.params.id)
   .then(data => {
     res.render('give_score', {dataSS: data})
   })
 })
 
-router.post('/subjects/:id/givescore', (req,res) => {
+router.post('/:id/givescore', (req,res) => {
   model.StudentSubject.update({
     Score: req.body.nilai
   },
