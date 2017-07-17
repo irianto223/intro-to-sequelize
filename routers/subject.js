@@ -5,6 +5,15 @@ var router = express.Router()
 var model = require('../models')
 var toLetter = require('../helpers/numToLetter')
 
+router.use((req,res,next) => {
+  if (req.session.role == 'headmaster' || req.session.role == 'academic') {
+    next()
+  }
+  else {
+    res.sendStatus(401)
+  }
+})
+
 router.get('/', (req,res) => {
   model.Subject.findAll({
     include: model.Teacher

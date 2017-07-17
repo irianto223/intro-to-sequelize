@@ -1,8 +1,18 @@
 'use strict'
 var express = require('express')
 var router = express.Router()
+var session = require('express-session')
 
 var model = require('../models')
+
+router.use((req,res,next) => {
+  if (req.session.role == 'teacher' || req.session.role == 'academic' || req.session.role == 'headmaster') {
+    next()
+  }
+  else {
+    res.sendStatus(401)
+  }
+})
 
 router.get('/', (req,res) => {
   model.Student.findAll()

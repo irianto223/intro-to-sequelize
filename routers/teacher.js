@@ -4,6 +4,15 @@ var router = express.Router()
 
 var model = require('../models')
 
+router.use((req,res,next) => {
+  if (req.session.role == 'headmaster') {
+    next()
+  }
+  else {
+    res.sendStatus(401)
+  }
+})
+
 router.get('/', (req,res) => {
   model.Teacher.findAll({
     include: model.Subject
