@@ -22,9 +22,9 @@ var subjectRouter = require('./routers/subject')
 var studentRouter = require('./routers/student')
 
 app.use('/', indexRouter)
-app.use('/', teacherRouter)
-app.use('/', subjectRouter)
-app.use('/', studentRouter)
+app.use('/teachers', teacherRouter)
+app.use('/subjects', subjectRouter)
+app.use('/students', studentRouter)
 
 
 app.listen(3000)

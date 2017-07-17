@@ -4,18 +4,18 @@ var router = express.Router()
 
 var model = require('../models')
 
-router.get('/students', (req,res) => {
+router.get('/', (req,res) => {
   model.Student.findAll()
   .then((data) => {
     res.render('student', {dataStudent: data, pageTitle: 'student page'})
   })
 })
 
-router.get('/students/add', (req,res) => {
+router.get('/add', (req,res) => {
   res.render('add_student', {pageTitle: 'add student'})
 })
 
-router.post('/students/add/', (req,res) => {
+router.post('/add/', (req,res) => {
   model.Student.findOne({where: {email: req.body.email}})
   .then(data => {
     if(!data || req.body.email === req.body.emailPembanding) {
@@ -33,21 +33,21 @@ router.post('/students/add/', (req,res) => {
   })
 })
 
-router.get('/students/delete/:id', (req,res) => {
+router.get('/delete/:id', (req,res) => {
   model.Student.destroy({where: {id: req.params.id}})
   .then(() => {
     res.redirect('/students')
   })
 })
 
-router.get('/students/edit/:id', (req,res) => {
+router.get('/edit/:id', (req,res) => {
   model.Student.findById(req.params.id)
   .then((data) => {
     res.render('edit_student', {dataEdit: data, pageTitle: 'edit student'})
   })
 })
 
-router.post('/students/edit/:id', (req,res) => {
+router.post('/edit/:id', (req,res) => {
   model.Student.findOne({where: {email: req.body.email}})
   .then(data => {
     if(!data || req.body.email === req.body.emailPembanding) {
@@ -65,7 +65,7 @@ router.post('/students/edit/:id', (req,res) => {
   })
 })
 
-router.get('/students/:id/addsubject', (req,res) => {
+router.get('/:id/addsubject', (req,res) => {
   model.Student.findById(req.params.id)
   .then(data => {
     model.Subject.findAll()
@@ -75,7 +75,7 @@ router.get('/students/:id/addsubject', (req,res) => {
   })
 })
 
-router.post('/students/:id/addsubject', (req,res) => {
+router.post('/:id/addsubject', (req,res) => {
   model.StudentSubject.create({SubjectId: req.body.dropDownSubject, StudentId: req.params.id, createdAt: new Date(), updatedAt: new Date()})
   res.redirect(`/students`)
 })
