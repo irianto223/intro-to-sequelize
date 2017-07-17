@@ -7,23 +7,15 @@ var model = require('../models')
 router.get('/students', (req,res) => {
   model.Student.findAll()
   .then((data) => {
-    res.render('student', {dataStudent: data})
+    res.render('student', {dataStudent: data, pageTitle: 'student page'})
   })
 })
 
 router.get('/students/add', (req,res) => {
-  res.render('add_student')
+  res.render('add_student', {pageTitle: 'add student'})
 })
 
 router.post('/students/add/', (req,res) => {
-  // studentModel.Student.create({ first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, jurusan: req.body.jurusan, createdAt: new Date(), updatedAt: new Date() })
-  // .then(() => {
-  //   res.redirect('/students')
-  // })
-  // .catch((err) => {
-  //   // res.redirect('/students/add')
-  //   res.send('email format is incorrect.')
-  // })
   model.Student.findOne({where: {email: req.body.email}})
   .then(data => {
     if(!data || req.body.email === req.body.emailPembanding) {
@@ -51,19 +43,11 @@ router.get('/students/delete/:id', (req,res) => {
 router.get('/students/edit/:id', (req,res) => {
   model.Student.findById(req.params.id)
   .then((data) => {
-    res.render('edit_student', {dataEdit: data})
+    res.render('edit_student', {dataEdit: data, pageTitle: 'edit student'})
   })
 })
 
 router.post('/students/edit/:id', (req,res) => {
-  // studentModel.Student.update({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, jurusan: req.body.jurusan}, {where: {id: req.params.id}})
-  // .then(() => {
-  //   res.redirect('/students')
-  // })
-  // .catch((err) => {
-  //   // res.redirect(`/students/edit/${req.params.id}`)
-  //   res.send('email format is incorrect.')
-  // })
   model.Student.findOne({where: {email: req.body.email}})
   .then(data => {
     if(!data || req.body.email === req.body.emailPembanding) {
@@ -86,7 +70,7 @@ router.get('/students/:id/addsubject', (req,res) => {
   .then(data => {
     model.Subject.findAll()
     .then(data2 => {
-      res.render('add_student_subject', {dataStudent: data, dataSubject: data2})
+      res.render('add_student_subject', {dataStudent: data, dataSubject: data2, pageTitle: 'add subject'})
     })
   })
 })

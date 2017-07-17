@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>edit student</title>
+    <%-include layout/header%>
   </head>
   <body>
-    <form action="/students/edit/<%= dataEdit.id %>" method="post">
-      <input type="text" name="first_name" placeholder="first name" value="<%= dataEdit.first_name %>">
-      <input type="text" name="last_name" placeholder="last name" value="<%= dataEdit.last_name %>">
-      <input type="text" name="email" placeholder="email" value="<%= dataEdit.email %>">
-      <input type="hidden" name="emailPembanding" value="<%= dataEdit.email %>">
-      <input type="text" name="jurusan" placeholder="jurusan" value="<%= dataEdit.jurusan %>">
-      <input type="submit" name="submit" value="SUBMIT">
-    </form>
-    <br><a href="/students">back</a>
+    <div class="container">
+      <%-include layout/page-header%>
+      <form action="/students/edit/<%= dataEdit.id %>" method="post">
+        <input type="text" name="first_name" placeholder="first name" value="<%= dataEdit.first_name %>">
+        <input type="text" name="last_name" placeholder="last name" value="<%= dataEdit.last_name %>">
+        <input type="text" name="email" placeholder="email" value="<%= dataEdit.email %>">
+        <input type="hidden" name="emailPembanding" value="<%= dataEdit.email %>">
+        <input type="text" name="jurusan" placeholder="jurusan" value="<%= dataEdit.jurusan %>">
+        <input type="submit" name="submit" value="SUBMIT">
+      </form>
+      <br><a href="/students">back</a>
+    </div>
+    <%-include layout/footer%>
   </body>
 </html>

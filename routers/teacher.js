@@ -9,14 +9,14 @@ router.get('/teachers', (req,res) => {
     include: model.Subject
   })
   .then(data => {
-    res.render('teacher', {dataTeacher: data})
+    res.render('teacher', {dataTeacher: data, pageTitle: 'teacher page'})
   })
 })
 
 router.get('/teachers/add', (req,res) => {
   model.Subject.findAll()
   .then((data) => {
-    res.render('add_teacher', {dataSubject: data})
+    res.render('add_teacher', {dataSubject: data, pageTitle: 'add teacher'})
   })
 })
 
@@ -39,7 +39,7 @@ router.get('/teachers/edit/:id', (req,res) => {
   .then(data => {
     model.Subject.findAll()
     .then((data2) => {
-      res.render('edit_teacher', {dataEdit: data, dataSubject: data2})
+      res.render('edit_teacher', {dataEdit: data, dataSubject: data2, pageTitle: 'edit teacher'})
     })
   })
 })

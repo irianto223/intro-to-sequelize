@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>add student's subject</title>
+    <%-include layout/header%>
   </head>
   <body>
-    <table border="1px" width="100%">
-      <tr>
-        <td><b>first name</b></td>
-        <td><%=dataStudent.first_name%></td>
-      </tr>
-      <tr>
-        <td><b>last name</b></td>
-        <td><%=dataStudent.last_name%></td>
-      </tr>
-      <tr>
-        <td><b>email</b></td>
-        <td><%=dataStudent.email%></td>
-      </tr>
-    </table><br>
-    <form action="/students/<%=dataStudent.id%>/addsubject" method="post">
-      <label for="">Choose Subject</label><br>
-      <select name="dropDownSubject">
-        <%dataSubject.forEach(d => {%>
-          <option value="<%=d.id%>"><%=d.subject_name%></option>
-        <%})%>
-      </select><br>
-      <input type="submit" name="submit"  value="submit">
-    </form><br>
-    <a href="/students">back</a>
+    <div class="container">
+      <%-include layout/page-header%>
+      <table width="100%" class="table-striped">
+        <tr>
+          <td><b>first name</b></td>
+          <td><%=dataStudent.first_name%></td>
+        </tr>
+        <tr>
+          <td><b>last name</b></td>
+          <td><%=dataStudent.last_name%></td>
+        </tr>
+        <tr>
+          <td><b>email</b></td>
+          <td><%=dataStudent.email%></td>
+        </tr>
+      </table><br>
+      <form action="/students/<%=dataStudent.id%>/addsubject" method="post">
+        <label for="">Choose Subject</label><br>
+        <select name="dropDownSubject">
+          <%dataSubject.forEach(d => {%>
+            <option value="<%=d.id%>"><%=d.subject_name%></option>
+          <%})%>
+        </select><br>
+        <input type="submit" name="submit"  value="submit">
+      </form><br>
+      <a href="/students">back</a>
+    </div>
+    <%-include layout/footer%>
   </body>
 </html>

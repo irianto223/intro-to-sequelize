@@ -9,7 +9,7 @@ router.get('/subjects', (req,res) => {
     include: model.Teacher
   })
   .then(data => {
-    res.render('subject', {dataSubject: data})
+    res.render('subject', {dataSubject: data, pageTitle: 'subject page'})
     // console.log(data);
   })
 })
@@ -20,7 +20,7 @@ router.get('/subjects/:id/enrolledstudents', (req,res) => {
     where: {SubjectId: req.params.id}
   })
   .then(data => {
-    res.render('enrolled_students', {dataSS: data})
+    res.render('enrolled_students', {dataSS: data, pageTitle: 'enrolled student'})
     // console.log(data);
   })
 })
@@ -28,7 +28,7 @@ router.get('/subjects/:id/enrolledstudents', (req,res) => {
 router.get('/subjects/:id/givescore', (req,res) => {
   model.StudentSubject.findById(req.params.id)
   .then(data => {
-    res.render('give_score', {dataSS: data})
+    res.render('give_score', {dataSS: data, pageTitle: 'assign score'})
   })
 })
 

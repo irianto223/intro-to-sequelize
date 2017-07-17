@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>give score</title>
+    <%-include layout/header%>
   </head>
   <body>
-    <form action="/subjects/<%=dataSS.id%>/givescore" method="post">
-      <label for="nilai">Input nilai: </label>
-      <input type="hidden" name="idSubject" value="<%=dataSS.SubjectId%>">
-      <input type="text" name="nilai" placeholder="nilai">
-      <input type="submit" name="submit" value="submit">
-    </form><br><br>
+    <div class="container">
+      <%-include layout/page-header%>
+      <form action="/subjects/<%=dataSS.id%>/givescore" method="post">
+        <label for="nilai">Input nilai: </label>
+        <input type="hidden" name="idSubject" value="<%=dataSS.SubjectId%>">
+        <input type="text" name="nilai" placeholder="nilai">
+        <input type="submit" name="submit" value="submit">
+      </form><br><br>
+    </div>
+    <%-include layout/footer%>
   </body>
 </html>
