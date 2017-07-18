@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%-include layout/header%>
+  </head>
+  <body>
+    <div class="container">
+      <%-include layout/page-header%>
+      <form action="/adduser" method="post">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="text" name="password" placeholder="password"><br>
+        <select name="role">
+          <option value="teacher">Teacher</option>
+          <option value="academic">Academic</option>
+          <option value="headmaster">Headmaster</option>
+        </select>
+        <input type="submit" name="submit" value="submit"><br><br>
+        <a href="/">back</a>
+      </form>
+    </div>
+    <%-include layout/footer%>
+  </body>
+</html>

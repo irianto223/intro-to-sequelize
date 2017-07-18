@@ -18,14 +18,14 @@ router.get('/', (req,res) => {
     include: model.Subject
   })
   .then(data => {
-    res.render('teacher', {dataTeacher: data, pageTitle: 'teacher page'})
+    res.render('teacher', {dataTeacher: data, pageTitle: 'teacher page', session: req.session})
   })
 })
 
 router.get('/add', (req,res) => {
   model.Subject.findAll()
   .then((data) => {
-    res.render('add_teacher', {dataSubject: data, pageTitle: 'add teacher'})
+    res.render('add_teacher', {dataSubject: data, pageTitle: 'add teacher', session: req.session})
   })
 })
 
@@ -48,7 +48,7 @@ router.get('/edit/:id', (req,res) => {
   .then(data => {
     model.Subject.findAll()
     .then((data2) => {
-      res.render('edit_teacher', {dataEdit: data, dataSubject: data2, pageTitle: 'edit teacher'})
+      res.render('edit_teacher', {dataEdit: data, dataSubject: data2, pageTitle: 'edit teacher', session: req.session})
     })
   })
 })

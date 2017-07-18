@@ -19,7 +19,7 @@ router.get('/', (req,res) => {
     include: model.Teacher
   })
   .then(data => {
-    res.render('subject', {dataSubject: data, pageTitle: 'subject page'})
+    res.render('subject', {dataSubject: data, pageTitle: 'subject page', session: req.session})
   })
 })
 
@@ -34,14 +34,14 @@ router.get('/:id/enrolledstudents', (req,res) => {
       d.Letter = toLetter(d.Score)
       // console.log(d.Score);
     })
-    res.render('enrolled_students', {dataSS: data, pageTitle: 'enrolled student'})
+    res.render('enrolled_students', {dataSS: data, pageTitle: 'enrolled student', session: req.session})
   })
 })
 
 router.get('/:id/givescore', (req,res) => {
   model.StudentSubject.findById(req.params.id)
   .then(data => {
-    res.render('give_score', {dataSS: data, pageTitle: 'assign score'})
+    res.render('give_score', {dataSS: data, pageTitle: 'assign score', session: req.session})
   })
 })
 

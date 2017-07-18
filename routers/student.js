@@ -11,18 +11,19 @@ router.use((req,res,next) => {
   }
   else {
     res.sendStatus(401)
+    // res.redirect('/login')
   }
 })
 
 router.get('/', (req,res) => {
   model.Student.findAll()
   .then((data) => {
-    res.render('student', {dataStudent: data, pageTitle: 'student page'})
+    res.render('student', {dataStudent: data, pageTitle: 'student page', session: req.session})
   })
 })
 
 router.get('/add', (req,res) => {
-  res.render('add_student', {pageTitle: 'add student'})
+  res.render('add_student', {pageTitle: 'add student', session: req.session})
 })
 
 router.post('/add/', (req,res) => {
@@ -53,7 +54,7 @@ router.get('/delete/:id', (req,res) => {
 router.get('/edit/:id', (req,res) => {
   model.Student.findById(req.params.id)
   .then((data) => {
-    res.render('edit_student', {dataEdit: data, pageTitle: 'edit student'})
+    res.render('edit_student', {dataEdit: data, pageTitle: 'edit student', session: req.session})
   })
 })
 
@@ -80,7 +81,7 @@ router.get('/:id/addsubject', (req,res) => {
   .then(data => {
     model.Subject.findAll()
     .then(data2 => {
-      res.render('add_student_subject', {dataStudent: data, dataSubject: data2, pageTitle: 'add subject'})
+      res.render('add_student_subject', {dataStudent: data, dataSubject: data2, pageTitle: 'add subject', session: req.session})
     })
   })
 })
