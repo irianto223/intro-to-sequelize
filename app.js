@@ -34,4 +34,4 @@ app.use('/subjects', subjectRouter)
 app.use('/students', studentRouter)
 
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
