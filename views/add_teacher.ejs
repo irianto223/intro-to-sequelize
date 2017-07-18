@@ -6,14 +6,18 @@
   <body>
     <div class="container">
       <%-include layout/page-header%>
-      <form action="/students/add" method="post">
+      <form action="" method="post">
         <input type="text" name="first_name" placeholder="first name">
         <input type="text" name="last_name" placeholder="last name">
         <input type="text" name="email" placeholder="email">
-        <input type="text" name="jurusan" placeholder="jurusan">
+        <select name="SubjectId">
+          <% dataSubject.forEach(d => { %>
+          <option value="<%= d.id %>"><%= d.subject_name %></option>
+          <% }) %>
+        </select>
         <input type="submit" name="submit" value="SUBMIT">
       </form>
-      <br><a href="/students">back</a>
+      <br><a href="/teachers">back</a>
     </div>
     <%-include layout/footer%>
   </body>
